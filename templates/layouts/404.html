@@ -1,0 +1,18 @@
+{{define "title"}}<title>Oops!</title>{{end}}
+
+{{define "content"}}
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404">
+            <h1>{{.style.Headline}}</h1>
+            <h2>404 - {{.style.Blurb}}.</h2>
+        </div>
+
+        {{with .referrer}}
+        <a href="{{.}}">Return with whence you came.</a>
+        {{else}}
+        <a href="/">Go to the homepage</a>
+        {{end}}
+    </div>
+</div>
+{{end}}
