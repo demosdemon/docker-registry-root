@@ -27,7 +27,7 @@ web:
       allow: false
       passthru: true
     /static:
-      root: /static
+      root: static
       passthru: false
 
 # The hooks executed at various points in the lifecycle of the application.
