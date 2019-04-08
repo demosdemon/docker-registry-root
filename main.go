@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"html/template"
 	"log"
@@ -69,6 +70,11 @@ func main() {
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
+
+	router.Any("/auth", appendSlash)
+	router.Any("/auth/", error501)
+	router.Any("/v2", appendSlash)
+	router.Any("/v2/", error501)
 
 	router.NoRoute(func(c *gin.Context) {
 		c.HTML(http.StatusNotFound, "404.html", gin.H{
@@ -209,4 +215,13 @@ func (ss styleset) randomStyle() style {
 
 	idx := rand.Intn(n)
 	return ss[idx]
+}
+
+func error501(c *gin.Context) {
+	c.AbortWithError(501, errors.New("not implemented"))
+}
+
+func appendSlash(c *gin.Context) {
+	path := c.Request.URL.Path + "/"
+	c.Redirect(301, path)
 }
