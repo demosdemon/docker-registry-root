@@ -71,8 +71,7 @@ func main() {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
 
-	router.Any("/auth", appendSlash)
-	router.Any("/auth/", error501)
+	router.Any("/auth", error501)
 	router.Any("/v2", appendSlash)
 	router.Any("/v2/", error501)
 
