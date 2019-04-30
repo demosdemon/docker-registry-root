@@ -7,7 +7,7 @@
 name: app
 
 # The runtime the application uses.
-type: golang:1.11
+type: golang:1.12
 
 # The configuration of `registry` when it is exposed to the web.
 web:
